@@ -1,0 +1,6 @@
+c Converted from gc_4_1
+c Source format: '<vertices> <edges>' header followed by integer edge pairs
+p edge 4 3
+e 1 2
+e 2 3
+e 2 4

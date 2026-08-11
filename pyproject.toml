@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vertex-coloring-framework"
+version = "0.1.0"
+description = "Pluggable vertex-coloring solvers with MLflow experiment tracking"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Patrick Byrnes" }]
+dependencies = [
+  "mlflow>=3.0",
+  "networkx>=3.2",
+]
+
+[project.optional-dependencies]
+ortools = ["ortools>=9.10"]
+pulp = ["pulp>=2.8"]
+gurobi = ["gurobipy>=12.0"]
+all-open-source = [
+  "ortools>=9.10",
+  "pulp>=2.8",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+  "mypy>=1.11",
+]
+
+[project.scripts]
+vertex-coloring = "vertex_coloring.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vertex_coloring"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
