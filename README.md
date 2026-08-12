@@ -5,13 +5,17 @@ solver API and recording comparable results in MLflow.
 
 ## Included methods
 
-| Method | Type | Dependency | Optimality |
-|---|---|---|---|
-| `greedy` | NetworkX greedy/DSATUR heuristic | Base install | Usually feasible only |
-| `backtracking` | Pure-Python DSATUR branch-and-bound | Base install | Exact unless timed out |
-| `ortools` | OR-Tools CP-SAT | Optional | Exact/anytime |
-| `pulp` | Binary MIP through PuLP/CBC | Optional | Exact/anytime |
-| `gurobi` | Native Gurobi binary MIP | Optional + license | Exact/anytime |
+| Method                      | Type                                                                   | Dependency | Optimality |
+|-----------------------------|------------------------------------------------------------------------|---|---|
+| `greedy`                    | NetworkX greedy/DSATUR heuristic                                       | Base install | Usually feasible only |
+| `backtracking`              | Pure-Python DSATUR branch-and-bound                                    | Base install | Exact unless timed out |
+| `violation`                 | Pure-Python violation reduction search                                 | Base install | Exact unless timed out |
+| `ortools`                   | OR-Tools CP-SAT                                                        | Optional | Exact/anytime |
+| `pulp`                      | Binary MIP through PuLP/CBC                                            | Optional | Exact/anytime |
+| `gurobi`                    | Native Gurobi binary MIP                                               | Optional + license | Exact/anytime |
+| `gurobi-representative`     | Native Gurobi binary MIP using a representative-based MIP formulation  | Optional + license | Exact/anytime |
+| `pyomo-scip`                | SCIP binary MIP via Pyomo                                              | Optional | Exact/anytime |
+| `pyomo-scip-representative` | SCIP binary MIP via Pyomo using a representative-based MIP formulation | Optional | Exact/anytime |
 
 Every method subclasses `BaseColoringSolver` and returns the same `ColoringResult` model.
 
